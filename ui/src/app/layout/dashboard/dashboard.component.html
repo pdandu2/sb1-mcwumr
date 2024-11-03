@@ -1,0 +1,311 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>Dashboard</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="role === 'ROLE_DOCTOR'">
+	<ion-list class="ios list-ios hydrated">
+		<ion-list-header class="ios hydrated">
+			<h1>Dashboard </h1>
+		</ion-list-header>
+	</ion-list>
+
+	<div class="grid-item">
+		<ion-toolbar>
+			<ion-searchbar mode="ios" (keyup)="searchPatientsData($event.target.value)" debounce="100">
+			</ion-searchbar>
+		</ion-toolbar>
+
+	</div>
+
+	<ion-grid>
+		<ion-item>
+			<ion-row>
+				<section>
+					<ion-button size="medium" color="medium" disabled="false">Waiting Room</ion-button>
+					<ion-badge color="medium" mode="ios">3</ion-badge>
+				</section>
+
+
+				<section>
+					<!-- <ion-button size="medium" color="medium" disabled="false">Appointments</ion-button> -->
+					<ion-badge color="medium" mode="ios">12K</ion-badge>
+					<ion-content>
+						<ion-button size="small">submit Info</ion-button>
+					</ion-content>
+				</section>
+				<section>
+					<ion-button size="medium" color="medium" disabled="false">Prescriptions</ion-button>
+					<ion-badge color="medium" mode="ios">10K</ion-badge>
+				</section>
+				<section>
+					<ion-button size="medium" color="medium" disabled="false"
+						(click)="filterPatients('Documentneeded')">Documents</ion-button>
+					<ion-badge color="medium" mode="ios">1000</ion-badge>
+				</section>
+				<section>
+					<ion-button size="medium" color="medium" disabled="false">Day Score</ion-button>
+					<ion-badge color="medium" mode="ios">600</ion-badge>
+				</section>
+				<section>
+					<ion-button size="medium" color="medium" disabled="false">Soap Notes</ion-button>
+					<ion-badge color="medium" mode="ios">20</ion-badge>
+				</section>
+				<section>
+					<ion-button size="medium" color="medium" disabled="false" (click)="filterPatients('messages')">
+						Messages</ion-button>
+					<ion-badge color="medium" mode="ios">5</ion-badge>
+					<!-- <ion-icon name="chatbox-ellipses">5</ion-icon> -->
+				</section>
+			</ion-row>
+		</ion-item>
+	</ion-grid>
+
+	<ion-list class="ios list-ios hydrated">
+		<ion-list-header class="ios hydrated"> Patients </ion-list-header>
+		<ion-row>
+			<ng-container *ngFor="let patient of filtereddata;">
+				<ion-router-link [routerLink]="['/layout/patients']">
+					<ion-card class="medicine-card" style="height: 181px">
+						<ion-card-header>
+							<div (click)="click(patient)">
+								<!-- <ion-avatar slot="end"> -->
+								<img src="./assets/avatar/{{patient.PatientAvatar}}">
+								<!-- </ion-avatar> -->
+								<div>
+									<ion-label>
+										<h3>
+											ID#: {{patient.PatientID}}
+										</h3>
+										<h2><strong>{{patient.PatientName}}</strong></h2>
+										<p>{{patient.PatientGender}} </p>
+										<p>
+											<ion-icon name="call"></ion-icon>
+											{{patient.PhoneNumber}}
+										</p>
+										<p>Age: {{patient.Age}}</p>
+										<p>Doc: {{patient.doc}}</p>
+									</ion-label>
+								</div>
+							</div>
+						</ion-card-header>
+					</ion-card>
+				</ion-router-link>
+				<!-- <section>
+						<ion-button id="trigger-button" size="medium" color="medium" disabled="false" (click)="assign(patient)"> assign to specialist </ion-button>
+						<ion-button size="medium" color="medium" disabled="false" (click)="assign(patient)">Discontinue</ion-button>
+					</section> -->
+			</ng-container>
+		</ion-row>
+	</ion-list>
+</ion-content>
+
+<ion-content [fullscreen]="true" *ngIf="role === 'ROLE_PATIENT'">
+	<ion-list class="ios list-ios hydrated">
+		<ion-list-header class="ios hydrated">
+			<h1>Patient Dashboard </h1>
+		</ion-list-header>
+	</ion-list>
+	<ion-grid>
+		<ion-item>
+			<ion-row>
+				<ion-list class="ios list-ios hydrated">
+					<ion-list-header class="ios hydrated"> Patients </ion-list-header>
+
+
+					<section>
+						<ion-button size="medium" color="medium" disabled="false">Do daily Rating for Yesterday
+						</ion-button>
+						<!-- <ion-badge color="medium" mode="ios">3</ion-badge> -->
+					</section>
+
+					<section>
+						<ion-button size="medium" color="medium" disabled="false">Do daily rating for Today</ion-button>
+						<!-- <ion-badge color="medium" mode="ios">3</ion-badge> -->
+					</section>
+
+					<section>
+						<ion-button size="medium" color="medium" disabled="false">Please fill out WHO-5 questionnire
+						</ion-button>
+						<!-- <ion-badge color="medium" mode="ios">3</ion-badge> -->
+					</section>
+
+					<section>
+						<ion-button size="medium" color="medium" disabled="false">Please fill out PHQ-8 questionnire
+						</ion-button>
+						<!-- <ion-badge color="medium" mode="ios">3</ion-badge> -->
+					</section>
+
+					<ion-item>
+						<ion-label position="floating">SOAP NOTES </ion-label>
+						<ion-textarea disabled="false" rows="2" cols="5" placeholder="Updated! Taken on Date:. . ">
+						</ion-textarea>
+					</ion-item>
+
+					<ion-item>
+						<ion-label position="floating">Previous appt date </ion-label>
+						<!-- <ion-textarea disabled="false" rows="2" cols="5" placeholder="Date here ">
+						</ion-textarea> -->
+						<ion-input [value]="dateValue2"></ion-input>
+						<ion-button fill="clear" id="open-date-input-2">
+							<ion-icon icon="calendar"></ion-icon>
+						</ion-button>
+						<ion-popover trigger="open-date-input-2" show-backdrop="false">
+							<ng-template>
+								<ion-datetime #popoverDatetime2 presentation="date"
+									(ionChange)="dateValue2 = formatDate(popoverDatetime2.value)"></ion-datetime>
+							</ng-template>
+						</ion-popover>
+					</ion-item>
+
+					<ion-item>
+						<ion-label position="floating">Future appt date </ion-label>
+						<!-- <ion-textarea disabled="false" rows="2" cols="5" placeholder="Date here ">
+						</ion-textarea> -->
+						<ion-input [value]="dateValue2"></ion-input>
+						<ion-button fill="clear" id="open-date-input-2">
+							<ion-icon icon="calendar"></ion-icon>
+						</ion-button>
+						<ion-popover trigger="open-date-input-2" show-backdrop="false">
+							<ng-template>
+								<ion-datetime #popoverDatetime2 presentation="date"
+									(ionChange)="dateValue2 = formatDate(popoverDatetime2.value)"></ion-datetime>
+							</ng-template>
+						</ion-popover>
+					</ion-item>
+
+					<ion-item>
+						<ion-label position="floating">Next appt date</ion-label>
+						<ion-textarea disabled="false" rows="2" cols="5" placeholder="Date here ">
+						</ion-textarea>
+					</ion-item>
+
+					<ion-item>
+						<ion-label position="floating">Avg Day Score </ion-label>
+						<ion-textarea disabled="false" rows="2" cols="5" placeholder="Taken on Date:. . ">
+						</ion-textarea>
+					</ion-item>
+
+					<ion-item>
+						<ion-label position="floating">Today Focusing Tasks </ion-label>
+						<ion-textarea disabled="false" rows="2" cols="5" placeholder="Is improving... ">
+						</ion-textarea>
+					</ion-item>
+
+				</ion-list>
+
+			</ion-row>
+		</ion-item>
+		<ion-list inset="true">
+			<ng-container *ngFor="let actionItem of actionItemsData;">
+
+				<ion-accordion-group>
+					<ion-accordion value="shapes">
+						<ion-item slot="header">
+							<ion-checkbox disabled="false"></ion-checkbox>
+							<div style="padding-left:15px;">
+								<strong>
+									<ion-label>{{actionItem.disorders}}</ion-label>
+								</strong>
+							</div>
+						</ion-item>
+						<ion-list slot="content">
+							<ul>
+								<li *ngIf="actionItem.Content1">
+									<ion-label>{{actionItem.Content1}}</ion-label>
+								</li>
+								<li *ngIf="actionItem.Content2">
+									<ion-label>{{actionItem.Content2}}</ion-label>
+								</li>
+								<li *ngIf="actionItem.Content3">
+									<ion-label>{{actionItem.Content3}}</ion-label>
+								</li>
+							</ul>
+
+
+							<div style="padding-left: 10px;">
+								<ion-col>
+									<strong>
+										<ion-label>I have felt cheerful in good spirits.</ion-label>
+									</strong>
+									<div style="padding-left: 50px; padding-right: 50px;">
+										<ion-range min="0" max="5" step="1" value="0" pin snaps color="secondary">
+											<ion-icon slot="start" size="small"  name="happy"></ion-icon>
+											<ion-icon slot="end"  name="happy"></ion-icon>
+										</ion-range>
+									</div>
+								</ion-col>
+							</div>
+
+
+							<div style="padding-left: 10px;">
+								<ion-col>
+									<strong>
+										<ion-label>I have felt calm and relaxed.</ion-label>
+									</strong>
+									<div style="padding-left: 50px; padding-right: 50px;">
+										<ion-range min="0" max="5" step="1" value="0" pin snaps color="secondary">
+											<ion-icon slot="start" size="small"  name="happy"></ion-icon>
+											<ion-icon slot="end"  name="happy"></ion-icon>
+										</ion-range>
+									</div>
+								</ion-col>
+							</div>
+
+
+							<div style="padding-left: 10px;">
+								<ion-col>
+									<strong>
+										<ion-label>I have felt active and vigorous.</ion-label>
+									</strong>
+									<div style="padding-left: 50px; padding-right: 50px;">
+										<ion-range min="0" max="5" step="1" value="0" pin snaps color="secondary">
+											<ion-icon slot="start" size="small"  name="happy"></ion-icon>
+											<ion-icon slot="end"  name="happy"></ion-icon>
+										</ion-range>
+									</div>
+								</ion-col>
+							</div>
+
+
+							<div style="padding-left: 10px;">
+								<ion-col>
+									<strong>
+										<ion-label>I woke up feeling fresh and rested. </ion-label>
+									</strong>
+									<div style="padding-left: 50px; padding-right: 50px;">
+										<ion-range min="0" max="5" step="1" value="0" pin snaps color="secondary">
+											<ion-icon slot="start" size="small"  name="happy"></ion-icon>
+											<ion-icon slot="end"  name="happy"></ion-icon>
+										</ion-range>
+									</div>
+								</ion-col>
+							</div>
+
+							<div style="padding-left: 10px;">
+								<ion-col>
+									<strong>
+										<ion-label>My daily life has been filled with things that interest me. </ion-label>
+									</strong>
+									<div style="padding-left: 50px; padding-right: 50px;">
+										<ion-range min="0" max="5" step="1" value="0" pin snaps color="secondary">
+											<ion-icon slot="start" size="small"  name="happy"></ion-icon>
+											<ion-icon slot="end"  name="happy"></ion-icon>
+										</ion-range>
+									</div>
+								</ion-col>
+							</div>
+
+						</ion-list>
+					</ion-accordion>
+				</ion-accordion-group>
+			</ng-container>
+		</ion-list>
+
+	</ion-grid>
+
+</ion-content>

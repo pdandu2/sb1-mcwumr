@@ -1,0 +1,140 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>Action Plans</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+	<ion-list-header class="ios hydrated">
+		<h1>Action Plans</h1>
+	</ion-list-header>
+
+	<ion-list inset="true">
+		<ng-container *ngFor="let actionItem of actionItemsData;">
+
+			<ion-accordion-group>
+				<ion-accordion value="shapes">
+					<ion-item slot="header">
+						<ion-checkbox disabled="false"></ion-checkbox>
+					<div style="padding-left:15px;">
+						<strong>
+							<ion-label>{{actionItem.disorders}}</ion-label>
+						</strong>
+					</div>
+					</ion-item>
+					<ion-list slot="content">
+						<ul>
+						<li *ngIf="actionItem.Content1">
+						<ion-label >{{actionItem.Content1}}</ion-label>
+						</li>
+						<li *ngIf="actionItem.Content2">
+						<ion-label>{{actionItem.Content2}}</ion-label>
+						</li>
+						<li *ngIf="actionItem.Content3">
+						<ion-label>{{actionItem.Content3}}</ion-label>
+						</li>
+						</ul>
+
+
+						<div style="padding-left: 10px;" >
+							<ion-col>
+								<strong>
+							<ion-label>Little interest or pleasure in doing things</ion-label></strong>
+							<div style="padding-left: 50px; padding-right: 50px;">
+							<ion-range min="0" max="10" step="1" value="0" pin snaps color="secondary">
+							  </ion-range>
+							</div>
+						 </ion-col> 
+						</div>
+
+						<div style="padding-left: 10px;" >
+							<ion-col>
+								<strong>
+							<ion-label>Feeling down, depressed, or hopeless</ion-label></strong>
+							<div style="padding-left: 50px; padding-right: 50px;">
+							<ion-range min="0" max="10" step="1" value="0" pin snaps color="secondary">
+							  </ion-range>
+							</div>
+						 </ion-col> 
+						</div>
+
+						<div style="padding-left: 10px;" >
+							<ion-col>
+								<strong>
+							<ion-label>Trouble falling or staying asleep, or sleeping too much</ion-label></strong>
+							<div style="padding-left: 50px; padding-right: 50px;">
+							<ion-range min="0" max="10" step="1" value="0" pin snaps color="secondary">
+							  </ion-range>
+							</div>
+						 </ion-col> 
+						</div>
+
+						<div style="padding-left: 10px;" >
+							<ion-col>
+								<strong>
+							<ion-label>Feeling tired or having little energy</ion-label></strong>
+							<div style="padding-left: 50px; padding-right: 50px;">
+							<ion-range min="0" max="10" step="1" value="0" pin snaps color="secondary">
+							  </ion-range>
+							</div>
+						 </ion-col> 
+						</div>
+
+						<div style="padding-left: 10px;" >
+							<ion-col>
+								<strong>
+							<ion-label>Poor appetite or overeating</ion-label></strong>
+							<div style="padding-left: 50px; padding-right: 50px;">
+							<ion-range min="0" max="10" step="1" value="0" pin snaps color="secondary">
+							  </ion-range>
+							</div>
+						 </ion-col> 
+						</div>
+
+						<div style="padding-left: 10px;" >
+							<ion-col>
+								<strong>
+							<ion-label>Feeling bad about yourself—or that you are a failure or have let yourself or your family down</ion-label></strong>
+							<div style="padding-left: 50px; padding-right: 50px;">
+							<ion-range min="0" max="10" step="1" value="0" pin snaps color="secondary">
+							  </ion-range>
+							</div>
+						 </ion-col> 
+						</div>
+
+						<div style="padding-left: 10px;" >
+							<ion-col>
+								<strong>
+							<ion-label>Trouble concentrating on things, such as reading the newspaper or watching television</ion-label></strong>
+							<div style="padding-left: 50px; padding-right: 50px;">
+							<ion-range min="0" max="10" step="1" value="0" pin snaps color="secondary">
+							  </ion-range>
+							</div>
+						 </ion-col> 
+						</div>
+
+
+						<div style="padding-left: 10px;" >
+							<ion-col>
+								<strong>
+							<ion-label>Thoughts that you would be better off dead or of hurting yourself</ion-label></strong>
+							<div style="padding-left: 50px; padding-right: 50px;">
+							<ion-range min="0" max="10" step="1" value="0" pin snaps color="secondary">
+							  </ion-range>
+							</div>
+						 </ion-col> 
+						</div>
+
+
+				</ion-list>
+				</ion-accordion>
+
+			</ion-accordion-group>
+
+		</ng-container>
+	</ion-list>
+
+</ion-content>

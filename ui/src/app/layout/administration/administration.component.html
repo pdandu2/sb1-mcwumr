@@ -1,0 +1,223 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>Administration</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+	<ion-segment [(ngModel)]="segment" (ngModelChange)="segmentChanged()">
+
+		<ion-segment-button value="doctor">
+			<ion-label>Doctor</ion-label>
+		</ion-segment-button>
+
+		<ion-segment-button value="patient">
+			<ion-label>Patient</ion-label>
+		</ion-segment-button>
+
+		<ion-segment-button value="super_Admin">
+			<ion-label>Super Admin</ion-label>
+		</ion-segment-button>
+
+		<ion-segment-button value="Onboard_Org">
+			<ion-label>Onboard Org</ion-label>
+		</ion-segment-button>
+
+		<ion-segment-button value="Onboard_Doc">
+			<ion-label>Onboard Doc</ion-label>
+		</ion-segment-button>
+
+		<ion-segment-button value="Onboard_Patient">
+			<ion-label>Onboard Patient</ion-label>
+		</ion-segment-button>
+
+	</ion-segment>
+
+	<div [ngSwitch]="segment">
+		
+		<ion-card *ngSwitchCase="'Onboard_Patient'">
+			<ion-card-header>
+				Onboard Patient
+			</ion-card-header>
+			<ion-card-content>
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Patient Name : </ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Enter Org Name"></ion-textarea>
+				</ion-item>
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Patient Image :</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Org Image"></ion-textarea>
+				</ion-item>
+
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Doc Address1 :</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Org Address"></ion-textarea>
+				</ion-item>
+
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Doc Address2 :</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Org Address"></ion-textarea>
+				</ion-item>
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Doc Contact Phone:</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Org Address"></ion-textarea>
+				</ion-item>
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Doc Contact Email:</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Org Address"></ion-textarea>
+				</ion-item>
+
+				<section>
+					<ion-button size="medium" color="medium" disabled="false">Send Request</ion-button>
+				</section>
+
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card *ngSwitchCase="'Onboard_Doc'">
+			<ion-card-header>
+				Onboard Doc
+			</ion-card-header>
+			<ion-card-content>
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Doc Name : </ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Enter Org Name"></ion-textarea>
+				</ion-item>
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Doc Image :</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Org Image"></ion-textarea>
+				</ion-item>
+
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Doc Address1 :</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Org Address"></ion-textarea>
+				</ion-item>
+
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Doc Address2 :</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Org Address"></ion-textarea>
+				</ion-item>
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Doc Contact :</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Org Address"></ion-textarea>
+				</ion-item>
+
+				<section>
+					<ion-button size="medium" color="medium" disabled="false">Approve</ion-button>
+				</section>
+
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card *ngSwitchCase="'Onboard_Org'">
+			<ion-card-header>
+				Onboard Org
+			</ion-card-header>
+			<ion-card-content>
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Org Name : </ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Enter Org Name"></ion-textarea>
+				</ion-item>
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Org Image :</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Org Image"></ion-textarea>
+				</ion-item>
+
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Org Address1 :</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Org Address"></ion-textarea>
+				</ion-item>
+
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Org Address2 :</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Org Address"></ion-textarea>
+				</ion-item>
+
+				<ion-item style="padding-top: 15px;">
+					<ion-label>Org Contact :</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Org Address"></ion-textarea>
+				</ion-item>
+
+				<section>
+					<ion-button size="medium" color="medium" disabled="false">Send Request</ion-button>
+				</section>
+
+			</ion-card-content>
+		</ion-card>
+		
+		<ion-card *ngSwitchCase="'patient'">
+			<ion-card-header>
+				patient
+			</ion-card-header>
+			<ion-card-content>
+				<ion-item>
+					<ion-label>Mobile SMS Alerts</ion-label>
+					<ion-toggle slot="start" name="apple" color="secondary" mode="ios" checked></ion-toggle>
+				</ion-item>
+				<ion-item>
+					<ion-label>Push Messages Alerts</ion-label>
+					<ion-toggle slot="start" name="apple" color="secondary" mode="ios" checked></ion-toggle>
+				</ion-item>
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card *ngSwitchCase="'doctor'">
+			<ion-card-header>
+				Doctor
+			</ion-card-header>
+			<ion-card-content>
+
+				<ion-item>
+					<ion-label>Appointment SMS Alerts</ion-label>
+					<ion-toggle slot="start" name="apple" color="secondary" mode="ios" checked></ion-toggle>
+				</ion-item>
+
+				<ion-item>
+					<ion-label> Appointment Push Messages Alerts</ion-label>
+					<ion-toggle slot="start" name="apple" color="secondary" mode="ios" checked></ion-toggle>
+				</ion-item>
+
+
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card *ngSwitchCase="'super_Admin'">
+			<ion-card-header>
+				Super Admin
+			</ion-card-header>
+			<ion-card-content>
+
+				<ion-item>
+					<ion-label>Alerts</ion-label>
+					<ion-toggle slot="start" name="apple" color="secondary" mode="ios" checked></ion-toggle>
+				</ion-item>
+
+				<ion-item>
+					<ion-label>Alerts2</ion-label>
+					<ion-toggle slot="start" name="apple" color="secondary" mode="ios" checked></ion-toggle>
+				</ion-item>
+
+
+			</ion-card-content>
+		</ion-card>
+
+	</div>
+</ion-content>

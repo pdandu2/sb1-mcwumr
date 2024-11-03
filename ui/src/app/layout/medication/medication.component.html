@@ -1,0 +1,116 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>Medication</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false" overflow = "true">
+	<ion-grid>
+		<ion-row>
+			<ion-col size-xs="12" size-sm="6" size-md="4" size-lg="4" size-xl="2">
+				<ion-card class="medicine-card" (click)="openMedicinePopover(true, null)">
+					<ion-card-content>
+						<ion-icon name="add-outline" size="large"></ion-icon>
+					</ion-card-content>
+				</ion-card>
+			</ion-col>
+			<ion-col size-xs="12" size-sm="6" size-md="4" size-lg="4" size-xl="2" *ngFor="let medicine of medicines; let i = index;">
+				<ion-card class="medicine-card" (click)="openOptionPopover($event, medicine)">
+					<ion-card-header>
+						<ion-card-title>{{medicine.name}}</ion-card-title>
+						<ion-card-subtitle>{{medicine.composition}}</ion-card-subtitle>
+						<ion-card-subtitle>{{medicine.startDate + ' - ' + medicine.endDate}}</ion-card-subtitle>
+						<ion-card-subtitle>{{medicine.dosage}}</ion-card-subtitle>
+						<ion-card-subtitle>{{medicine.precautions}}</ion-card-subtitle>
+						<ion-card-subtitle>{{medicine.comments}}</ion-card-subtitle>
+					</ion-card-header>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	
+	
+	
+<!--	
+	<div class="history-tl-container" slot="fixed">
+		<ul class="tl">
+			<li class="tl-item" ng-repeat="item in retailer_history">
+				<div class="item-detail">
+					<ion-card>
+						<ion-card-header>
+							<!-- <ion-item>
+								<ion-item>
+									<ion-label position="floating">
+										<h1>Med Name</h1>
+									</ion-label>
+									<ion-input></ion-input>
+								</ion-item> -->
+								<!-- <ion-button fill="outline" slot="end">Done</ion-button> -->
+							<!-- </ion-item> -->
+						
+							<!-- <ion-item>
+								<ion-label position="floating">
+									<h2>Dose Type</h2>
+								</ion-label>
+								<ion-input></ion-input>
+							</ion-item> -->
+<!--							<ion-row >
+							<h1>
+								<strong>
+								<ion-input placeholder="Med Name" disabled="false"></ion-input>
+							</strong>
+							</h1>
+							<h4 style="padding-top: 10px;">
+							<ion-input placeholder="Enter Doseage" ></ion-input>
+							</h4>
+							</ion-row>
+							<ion-row >
+								<ion-item>
+									<ion-label>Prescribed By :</ion-label>
+									<ion-input></ion-input>
+								  </ion-item>
+								
+								</ion-row>
+							
+							
+							<h3><ion-input placeholder="Enter Date" ></ion-input></h3>
+							<h3></h3>
+							<h3><ion-input placeholder="Enter Precautions" ></ion-input></h3>
+							<h3><ion-input placeholder="Drug Composition" ></ion-input></h3>
+							<h3><ion-input placeholder="Drug Comments" ></ion-input></h3>
+						
+							<div class="grid-item">
+								<h2>Datetime in Overlay</h2>
+								<ion-button id="open-modal">Open Datetime Modal</ion-button>
+								<ion-modal trigger="open-modal">
+									<ion-content force-overscroll="false">
+										
+									</ion-content>
+								</ion-modal>
+							</div>
+								
+						</ion-card-header>
+					<ion-card><ion-textarea placeholder="Enter more information here..."></ion-textarea></ion-card>
+					<ion-card><ion-textarea placeholder="Doctor Sign"></ion-textarea></ion-card>
+						<ion-input placeholder="Doctor Sign" ></ion-input>
+						<ion-card-content><div style="margin-left: 25px;"> 
+									<ion-checkbox style="margin-top: 13px;"  slot="start"></ion-checkbox>
+								<ion-label style="padding:13px">Morning</ion-label> 
+									<ion-checkbox style="margin-top: 13px;"  slot="start"></ion-checkbox>
+								<ion-label style="padding:13px">Afternoon</ion-label>
+									<ion-checkbox style="margin-top: 13px;"  slot="start"></ion-checkbox>
+								<ion-label style="padding:13px">Night</ion-label>
+								</div>
+								
+							</ion-card-content>
+
+					</ion-card>
+				</div>
+			</li>
+		</ul>
+	</div>
+-->
+</ion-content>

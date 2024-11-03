@@ -1,0 +1,137 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>Patients</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollX="true" scrollY="true">
+
+<ion-list-header class="ios hydrated">
+	<h1>Patients</h1>
+</ion-list-header>
+
+<div class="grid-item">
+	<ion-toolbar>
+		<ion-searchbar mode="ios" (keyup)="searchPatientsData($event.target.value)"></ion-searchbar>
+	</ion-toolbar>
+</div>
+
+<ion-row class="row header" style="text-align-last: center;" scrollY="false"> 
+	<ion-col >Select</ion-col>
+	<ion-col >Name</ion-col>
+	<ion-col >ID</ion-col>
+	<ion-col >Age</ion-col>
+	<ion-col >Gender</ion-col>
+	<ion-col >Phone Icon</ion-col>
+	<ion-col >Date</ion-col>
+  </ion-row>
+<ion-content>
+	<ion-row style="text-align-last: center;" *ngFor="let patient of filtereddata;">
+		
+		<ion-col><ion-checkbox disabled="true"></ion-checkbox></ion-col> 
+		<!-- <ion-router-link [routerLink]="['/layout/overview', {patientId: patient.PatientID}]"></ion-router-link> -->
+	  <ion-col><ion-item> <ion-router-link [routerLink]="['/layout/overview', {patientId: patient.PatientID}]" (click)="showPatientDetails(patient.PatientName)">{{patient.PatientName}}</ion-router-link></ion-item></ion-col>
+	  <ion-col><ion-item>{{patient.PatientID}}</ion-item></ion-col>
+	  <ion-col><ion-item>{{patient.Age}}</ion-item></ion-col>
+	  <ion-col><ion-item>{{patient.PatientGender}}</ion-item></ion-col>
+	  <ion-col><ion-item>{{patient.PhoneNumber}}</ion-item></ion-col>
+	  <ion-col><ion-item>{{patient.Doc}}</ion-item></ion-col>
+	  <!-- <div class="col">{{data.code}}</div>
+	  <div class="col">LK {{data.limit}}</div>
+	  <div class="col">{{data.account}}</div> -->
+	  <!-- <div class="col"><button class="button" ng-click="ctrl.add($index)">Add</button></div> -->
+	  
+	</ion-row>
+	
+</ion-content>
+
+<!-- 
+<ion-content scrollX="true" scrollY="true">
+	<ion-list class="ios list-ios"> -->
+		<!-- <ng-container *ngFor="let patient of patientsData;">
+			<ion-row style="background: rgba(var(--ion-color-primary-rgb), 0.14)">
+			<ion-item >
+				<ion-router-link [routerLink]="['/layout/overview', {patientId: patient.PatientID}]">
+					<div class="item-has-start-slot item ios item-fill-none in-list hydrated item-label" 
+						(click)="showPatientDetails(patient.PatientName)">
+						<ion-avatar slot="start" class="ios hydrated">
+							<img src="./assets/avatar/{{patient.PatientAvatar}}">
+						</ion-avatar>
+						<ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
+							<h3>
+								ID#: {{patient.PatientID}}
+							</h3>
+							<h2>{{patient.PatientName}}</h2>
+							<p>{{patient.PatientGender}}, <ion-icon name="call"></ion-icon>{{patient.PhoneNumber}}</p>
+							<p>Age: {{patient.Age}}</p>
+							<p>Doc: {{patient.Doc}}</p>
+						</ion-label>
+					</div>
+				</ion-router-link>
+				<section>
+					<ion-button id="trigger-button" size="medium" color="medium" disabled="false"
+						(click)="assign(patient)"> assign to specialist </ion-button>
+					<ion-button size="medium" color="medium" disabled="false" (click)="assign(patient)">Discontinue
+					</ion-button>
+				</section>
+			</ion-item>
+			<ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">Testing</ion-label>
+		</ion-row>
+		</ng-container> -->
+		<!-- <ion-content text-center style="background-color:rgb(179, 97, 97)"> -->
+		<!------------------- HEADER ----------------------->
+		<!-- <ion-scroll scrollX="true" scrollY="true" zoom="false" no-padding> -->
+		<!-- <div scrollY="true"> -->
+			<!-- <ion-item color="gray">
+				<ion-row >
+					<ion-col style="font-size:11pt">Name</ion-col>
+					<ion-col style="font-size:11pt">ID</ion-col>
+					<ion-col>Age</ion-col>
+					<ion-col>Gender</ion-col>
+					<ion-col col-10 >Running Balance</ion-col>
+					<ion-col >Phone Icon</ion-col>
+					<ion-col col-16 style="font-size:10pt">Date</ion-col>
+					<ion-col col-6 >Account No.</ion-col>
+				  <ion-col col-5 >Branch</ion-col>
+				  <ion-col col-50 text-wrap>Remarks</ion-col>
+				  <ion-col col-10 >Ref.</ion-col>
+				  <ion-col col-6 >Code</ion-col> 
+				</ion-row>
+			</ion-item>
+			<ion-item >
+				<ion-row >
+					<ion-col>Name</ion-col>
+					<ion-col>ID</ion-col>
+					<ion-col>Age</ion-col>
+					<ion-col>Gender</ion-col>
+					<ion-col>Phone</ion-col>
+				</ion-row>
+			</ion-item>
+			<!------------------- table ----------------------->
+			<!-- <ion-item color="primary" style="width:auto" *ngFor="let item of filtereddata">
+				<ion-row text-center nowrap>
+					<ion-row>
+
+					<ion-col> {{item.PatientName}}</ion-col>
+					<ion-col>{{item.PatientID}}</ion-col>
+					<ion-col>{{item.Age}}</ion-col>
+					<ion-col>{{item.Doc}}</ion-col>
+					<ion-col>{{item.PhoneNumber}}</ion-col>
+					  <ion-col col-4 >{{item.PhoneNumber}}</ion-col>
+				  <ion-col col-16 style="font-size:10pt">{{item.TransType}}</ion-col>
+				  <ion-col col-6 >{{item.Account}}</ion-col>
+				  <ion-col col-5 >{{item.Branch}}</ion-col>
+				  <ion-col col-50 text-wrap>{{item.Remarks}}</ion-col>
+				  <ion-col col-10 >{{item.Ref}}</ion-col>
+				  <ion-col col-6 style="font-size:11pt">{{item.Code}}</ion-col>
+				</ion-row>
+			</ion-item>
+		</div>
+		</ion-scroll> --> 
+
+		<!-- </ion-content>
+	</ion-list>-->
+</ion-content> 

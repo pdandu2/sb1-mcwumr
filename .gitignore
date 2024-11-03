@@ -1,1 +1,5 @@
-node_modules
+/target/
+/ui/.angular/
+/ui/node/
+/ui/node_modules/
+/ui/www/

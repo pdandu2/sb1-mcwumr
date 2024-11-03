@@ -1,0 +1,24 @@
+ion-card {
+	margin: 0px;
+}
+
+ion-grid, ion-row, ion-col {
+	padding: 2px;
+}
+
+.medicine-card {
+	height: 100%;
+	ion-card-content {
+		text-align: center;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+.medicine-card:hover {
+	background-color: rgb(250, 250, 250);
+	cursor: pointer;
+}

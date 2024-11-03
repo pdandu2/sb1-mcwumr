@@ -1,0 +1,85 @@
+<style>
+ion-segment, ion-item, ion-row, ion-col, ion-button {
+	z-index: 10000;
+}
+ion-row, ion-col, ion-button {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+ion-icon {
+	margin: 0px;
+}
+form {
+	margin-top: 10px;
+}
+.background {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	opacity: 0.03;
+}
+img {
+	height: 250px;
+}
+.item-checkbox {
+	margin-left: -15px;
+}
+ion-checkbox {
+	margin-left: 15px;
+}
+</style>
+
+<ion-content>
+	<form [formGroup]="medicine" (ngSubmit)="medicineChanged(true)">
+		<ion-item color="none">
+			<ion-label position="floating">Name</ion-label>
+			<ion-input formControlName="name"></ion-input>
+			<!--<ion-input formControlName="name" (focusout)="medicine.patchValue({ name: $event.target.value.trim() })"></ion-input>-->
+		</ion-item>
+		<ion-item color="none">
+			<ion-label position="floating">Composition</ion-label>
+			<ion-input formControlName="composition"></ion-input>
+		</ion-item>
+		<ion-item color="none">
+			<ion-label position="floating">Dosage</ion-label>
+			<ion-input formControlName="dosage"></ion-input>
+		</ion-item>
+		<ion-item color="none">
+			<ion-label position="floating">Start Date</ion-label>
+			<ion-input formControlName="startDate"></ion-input>
+		</ion-item>
+		<ion-item color="none">
+			<ion-label position="floating">End Date</ion-label>
+			<ion-input formControlName="endDate"></ion-input>
+		</ion-item>
+		<ion-item color="none">
+			<ion-label position="floating">Precautions</ion-label>
+			<ion-input formControlName="precautions"></ion-input>
+		</ion-item>
+		<ion-item color="none">
+			<ion-label position="floating">Comments</ion-label>
+			<ion-input formControlName="comments"></ion-input>
+		</ion-item>
+		<ion-row>
+			<ion-col>
+				<br/>
+				<ion-button type="submit" color="secondary" expand="block" [disabled]="!medicine.valid">
+					{{medicine.value.id ? 'Update' : 'Save'}}
+				</ion-button>
+			</ion-col>
+			<ion-col>
+				<br/>
+				<ion-button color="light" expand="block" (click)="medicineChanged(false)">Cancel</ion-button>
+			</ion-col>
+		</ion-row>
+	</form>
+<!--	<div class="background">
+		<img src="assets/icon/123.png">
+	</div>-->
+</ion-content>

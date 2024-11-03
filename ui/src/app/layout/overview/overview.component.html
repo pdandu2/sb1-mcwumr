@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>Overview</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+	<ion-segment [(ngModel)]="segment" (ngModelChange)="segmentChanged()">
+
+		<ion-segment-button value="Basic_Info">
+			<ion-label>Basic Info</ion-label>
+		</ion-segment-button>
+
+		<ion-segment-button value="Family_Info">
+			<ion-label>family Info</ion-label>
+		</ion-segment-button>
+	</ion-segment>
+
+
+
+	<div [ngSwitch]="segment">
+		<ion-card *ngSwitchCase="'Basic_Info'">
+			<ion-card-header>
+				Basic Info
+			</ion-card-header>
+			<ion-card-content>
+				<form [formGroup]="basicInfoFg">
+					<ion-item style="padding-top: 15px;">
+						<ion-label>Name :</ion-label>
+						<ion-input formControlName="name" disabled="false" rows="2" cols="5" placeholder="Enter Name"></ion-input>
+					</ion-item>
+
+					<ion-item style="padding-top: 15px;">
+						<ion-label>DOB :</ion-label>
+						<ion-input formControlName="dob" disabled="false" rows="2" cols="5" placeholder="DOB"></ion-input>
+					</ion-item>
+				</form>
+			</ion-card-content>
+		</ion-card>
+		
+		<ion-card *ngSwitchCase="'Family_Info'">
+			<ion-card-header>
+				Family Info
+			</ion-card-header>
+
+			<ion-card-content>
+				<form [formGroup]="familyInfoFg">
+					<ion-item style="padding-top: 15px;">
+						<ion-label>Name :</ion-label>
+						<ion-input formControlName="name" disabled="false" rows="2" cols="5" placeholder="Enter Name"></ion-input>
+					</ion-item>
+
+					<ion-item style="padding-top: 15px;">
+						<ion-label>DOB :</ion-label>
+						<ion-input formControlName="dob" disabled="false" rows="2" cols="5" placeholder="DOB"></ion-input>
+					</ion-item>
+				</form>
+			</ion-card-content>
+			
+		</ion-card>
+	</div>
+
+	<ion-content *ngIf="enable">
+		<ion-button size="small" (click)="submitinfo()">submit Info</ion-button>
+	</ion-content>
+
+	<ion-content *ngIf="enable">
+		<ion-button size="small" (click)="submitfamilyinfo()">submit family Info</ion-button>
+	</ion-content>
+
+</ion-content>

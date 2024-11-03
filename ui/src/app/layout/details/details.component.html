@@ -1,0 +1,141 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>Details</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+	<ion-segment [(ngModel)]="segment" (ngModelChange)="segmentChanged()">
+	
+		<ion-segment-button value="Subjective">
+			<ion-label>Subjective</ion-label>
+		</ion-segment-button>
+	
+		<ion-segment-button value="Objective">
+			<ion-label>Objective</ion-label>
+		</ion-segment-button>
+	
+		<ion-segment-button value="Assessment">
+			<ion-label>Assessment</ion-label>
+		</ion-segment-button>
+	
+	</ion-segment>
+
+	<div [ngSwitch]="segment">
+		<ion-card *ngSwitchCase="'Subjective'">
+			<ion-card-header>
+				Subjective
+			</ion-card-header>
+			<ion-card-content>
+				<ion-item>
+					<ion-label position="floating">CC : Chief Complaint Notes</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5"
+						placeholder="Enter Chief Complaint Notes notes here...">
+					</ion-textarea>
+				</ion-item>
+
+				<ion-item>
+					<ion-label position="floating">HPI : History of Present illness</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5"
+						placeholder="Enter History of Present illness notes here...">
+					</ion-textarea>
+				</ion-item>
+
+				<ion-item>
+					<ion-label position="floating">PMH : Past Medical History</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5"
+						placeholder="Enter Past Medical History notes here...">
+					</ion-textarea>
+				</ion-item>
+
+
+				<ion-item>
+					<ion-label position="floating">RS : Review of Systems</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5"
+						placeholder="Enter Review of Systems notes here...">
+					</ion-textarea>
+				</ion-item>
+
+
+				<ion-item>
+					<ion-label position="floating">FH : Family History</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Enter Family History here...">
+					</ion-textarea>
+				</ion-item>
+
+
+				<ion-item>
+					<ion-label position="floating">SH : Social History</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Enter Social History here...">
+					</ion-textarea>
+				</ion-item>
+
+
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card *ngSwitchCase="'Objective'">
+			<ion-card-header>
+				Objective
+			</ion-card-header>
+			<ion-card-content>
+				<ion-item>
+					<ion-label position="floating">VS : Vital Signs</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Enter Vital Signs notes here...">
+					</ion-textarea>
+				</ion-item>
+
+				<ion-item>
+					<ion-label position="floating">PE : Physical Exam</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Enter Physical Exam notes here...">
+					</ion-textarea>
+				</ion-item>
+
+				<ion-item>
+					<ion-label position="floating">LR : Physical Exam</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Enter Physical Exam notes here...">
+					</ion-textarea>
+				</ion-item>
+
+
+				<ion-item>
+					<ion-label position="floating">DD : Diagnostics Data</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Enter Diagnostics Data notes here...">
+					</ion-textarea>
+				</ion-item>
+
+
+				<ion-item>
+					<ion-label position="floating">CD : Clinic Data</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Enter Clinic Data here...">
+					</ion-textarea>
+				</ion-item>
+
+			</ion-card-content>
+		</ion-card>
+
+		<ion-card *ngSwitchCase="'Assessment'">
+			<ion-card-header>
+				Assessment
+			</ion-card-header>
+			<ion-card-content>
+				<ion-item>
+					<ion-label position="floating">Assessment</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5" placeholder="Enter Assessment notes here...">
+					</ion-textarea>
+				</ion-item>
+
+				<ion-item>
+					<ion-label position="floating">Differential Diagnosis</ion-label>
+					<ion-textarea disabled="false" rows="2" cols="5"
+						placeholder="Enter Differential Diagnosis notes here...">
+					</ion-textarea>
+				</ion-item>
+			</ion-card-content>
+		</ion-card>
+	</div>
+</ion-content>

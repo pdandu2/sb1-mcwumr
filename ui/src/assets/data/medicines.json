@@ -1,0 +1,49 @@
+[
+	{
+		"id": "1",
+		"name": "advil",
+		"composition": "ibuprofen",
+		"dosage": "Daily 3 times",
+		"startDate": "2022/01/01",
+		"endDate": "2022/01/31",
+		"precautions": "Don't take with empty stomach & Do not lie down for at least 10 minutes after taking this drug",
+		"comments": "N/A"
+	},{
+		"id": "2",
+		"name": "TYLENOL",
+		"composition": "Acetaminophen",
+		"dosage": "Daily 3 times",
+		"startDate": "2022/01/15",
+		"endDate": "2022/01/30",
+		"precautions": "Don't take with empty stomach",
+		"comments": "It can treat minor aches and pains, and reduces fever."
+	},{
+		"id": "3",
+		"name": "Cortaid",
+		"composition": "Hydrocortisone",
+		"dosage": "Daily 3 times",
+		"startDate": "2022/01/01",
+		"endDate": "2022/01/15",
+		"precautions": "inactive tuberculosis.",
+		"comments": "Avoid getting this medication in the eyes, nose, or mouth."
+	},{
+		"id": "4",
+		"name": "motrin ib",
+		"composition": "Ibuprofen",
+		"dosage": "Daily 3 times",
+		"startDate": "2022/01/01",
+		"endDate": "2022/01/31",
+		"precautions": "Don't take with empty stomach",
+		"comments": "Nonsteroidal anti-inflammatory drug"
+	},{
+		"id": "5",
+		"name": "TYLENOL",
+		"composition": "Acetaminophen",
+		"dosage": "Daily 3 times",
+		"startDate": "2022/01/01",
+		"endDate": "2022/01/31",
+		"precautions": "Don't take with empty stomach",
+		"comments": "Interactions can occur"
+	}
+	
+]
